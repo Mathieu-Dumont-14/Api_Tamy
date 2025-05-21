@@ -1,0 +1,1473 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Tamy API",
+    "version": "1.0.0",
+    "description": "API REST en PHP natif pour la gestion de clubs, utilisateurs, tournois, r\u00e9servations, matchs, badges, etc."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Serveur local"
+    }
+  ],
+  "paths": {
+    "/clubs": {
+      "get": {
+        "summary": "Liste des clubs",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Club"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un club",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Club"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/clubs/{id}": {
+      "get": {
+        "summary": "Obtenir un club par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un club",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Club"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un club",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/utilisateurs": {
+      "get": {
+        "summary": "Liste des utilisateurs",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Utilisateur"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un utilisateur",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Utilisateur"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/utilisateurs/{id}": {
+      "get": {
+        "summary": "Obtenir un utilisateur par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un utilisateur",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Utilisateur"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un utilisateur",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/tournaments": {
+      "get": {
+        "summary": "Liste des tournaments",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tournament"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un tournament",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tournament"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/tournaments/{id}": {
+      "get": {
+        "summary": "Obtenir un tournament par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un tournament",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tournament"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un tournament",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/courts": {
+      "get": {
+        "summary": "Liste des courts",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Court"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un court",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Court"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/courts/{id}": {
+      "get": {
+        "summary": "Obtenir un court par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un court",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Court"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un court",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/slots": {
+      "get": {
+        "summary": "Liste des slots",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Slot"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un slot",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Slot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/slots/{id}": {
+      "get": {
+        "summary": "Obtenir un slot par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un slot",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Slot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un slot",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/reservations": {
+      "get": {
+        "summary": "Liste des reservations",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reservation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un reservation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reservation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/reservations/{id}": {
+      "get": {
+        "summary": "Obtenir un reservation par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un reservation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reservation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un reservation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "summary": "Liste des roles",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Role"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un role",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/roles/{id}": {
+      "get": {
+        "summary": "Obtenir un role par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Role"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un role",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/badges": {
+      "get": {
+        "summary": "Liste des badges",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Badge"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un badge",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Badge"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/badges/{id}": {
+      "get": {
+        "summary": "Obtenir un badge par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un badge",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Badge"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un badge",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/playerstatss": {
+      "get": {
+        "summary": "Liste des playerstatss",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerStats"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un playerstats",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerStats"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/playerstatss/{id}": {
+      "get": {
+        "summary": "Obtenir un playerstats par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Non trouv\u00e9"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un playerstats",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerStats"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un playerstats",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Supprim\u00e9"
+          }
+        }
+      }
+    },
+    "/userbadges": {
+      "get": {
+        "summary": "Liste des userbadges",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserBadge"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er une liaison UserBadge",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBadge"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/tournamentplayers": {
+      "get": {
+        "summary": "Liste des tournamentplayers",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TournamentPlayer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er une liaison TournamentPlayer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TournamentPlayer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/reservationutilisateurs": {
+      "get": {
+        "summary": "Liste des reservationutilisateurs",
+        "responses": {
+          "200": {
+            "description": "Liste",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ReservationUtilisateur"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er une liaison ReservationUtilisateur",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationUtilisateur"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/matchs": {
+      "get": {
+        "summary": "Lister tous les matchs",
+        "responses": {
+          "200": {
+            "description": "Liste des matchs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cr\u00e9er un match",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Match"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Match cr\u00e9\u00e9"
+          }
+        }
+      }
+    },
+    "/matchs/{id}": {
+      "get": {
+        "summary": "Obtenir un match par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Match trouv\u00e9"
+          },
+          "404": {
+            "description": "Match introuvable"
+          }
+        }
+      },
+      "put": {
+        "summary": "Mettre \u00e0 jour un match",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Match"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Match mis \u00e0 jour"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un match",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Match supprim\u00e9"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Club": {
+        "type": "object",
+        "properties": {
+          "id_club": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "adresse": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Utilisateur": {
+        "type": "object",
+        "properties": {
+          "id_utilisateur": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "is_verified": {
+            "type": "boolean"
+          },
+          "last_login": {
+            "type": "string"
+          },
+          "id_role": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Tournament": {
+        "type": "object",
+        "properties": {
+          "id_tournaments": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "end_date": {
+            "type": "string"
+          },
+          "type_tournois": {
+            "type": "string"
+          },
+          "id_club": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Court": {
+        "type": "object",
+        "properties": {
+          "id_courts": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "surface_type": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "id_club": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Slot": {
+        "type": "object",
+        "properties": {
+          "id_slots": {
+            "type": "integer"
+          },
+          "start_time": {
+            "type": "string"
+          },
+          "end_time": {
+            "type": "string"
+          },
+          "max_players": {
+            "type": "integer"
+          },
+          "id_courts": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Reservation": {
+        "type": "object",
+        "properties": {
+          "id_reservation": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "id_slots": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id_role": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Badge": {
+        "type": "object",
+        "properties": {
+          "id_badges": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      },
+      "PlayerStats": {
+        "type": "object",
+        "properties": {
+          "id_utilisateur": {
+            "type": "integer"
+          },
+          "total_matches": {
+            "type": "integer"
+          },
+          "total_wins": {
+            "type": "integer"
+          },
+          "total_looses": {
+            "type": "integer"
+          },
+          "total_reservations": {
+            "type": "integer"
+          }
+        }
+      },
+      "UserBadge": {
+        "type": "object",
+        "properties": {
+          "id_utilisateur": {
+            "type": "integer"
+          },
+          "id_badges": {
+            "type": "integer"
+          },
+          "earned_at": {
+            "type": "string"
+          }
+        }
+      },
+      "TournamentPlayer": {
+        "type": "object",
+        "properties": {
+          "id_utilisateur": {
+            "type": "integer"
+          },
+          "id_tournaments": {
+            "type": "integer"
+          }
+        }
+      },
+      "ReservationUtilisateur": {
+        "type": "object",
+        "properties": {
+          "id_utilisateur": {
+            "type": "integer"
+          },
+          "id_reservation": {
+            "type": "integer"
+          }
+        }
+      },
+      "Match": {
+        "type": "object",
+        "properties": {
+          "id_matches": {
+            "type": "integer"
+          },
+          "round": {
+            "type": "string"
+          },
+          "player_1": {
+            "type": "integer"
+          },
+          "player_2": {
+            "type": "integer"
+          },
+          "score": {
+            "type": "string"
+          },
+          "winner_id": {
+            "type": "integer"
+          },
+          "id_slots": {
+            "type": "integer"
+          },
+          "id_tournaments": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
